@@ -25,6 +25,8 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT
 ```
 
+![Installing AWS CLI](assets/week0/installing-aws-cli.png)
+
 ### Create a Budget
 
 I created my own Budget for $10 because I feel comfortable spending up to 10 dollars. Getting a notification when exceeding more than 10 dollars will help me take actions and avoid overspending.
