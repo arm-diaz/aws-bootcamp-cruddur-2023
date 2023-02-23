@@ -18,8 +18,8 @@ class Messages:
       },
       {
         'uuid': '66e12864-8c26-4c3a-9658-95a10f8fea67',
-        'display_name': 'Andrew Brown',
-        'handle':  'andrewbrown',
+        'display_name': 'Armando Diaz',
+        'handle':  'armandodiaz',
         'message': 'This platform is great!',
         'created_at': now.isoformat()
     }]
