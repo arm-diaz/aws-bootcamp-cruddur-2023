@@ -1,8 +1,10 @@
-{
+{   
+    "root": true,
     "settings": {
         "react": {
           "version": "detect"
-        }
+        },
+        "eslint.enable": false
     },
     "env": {
         "browser" : true,
@@ -10,6 +12,8 @@
         "node": true
     },
     "rules": {
+        //"prettier/prettier": "warn",
+        "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]//, //should add ".ts" if typescript project
         //"no-unused-vars" : 2,
@@ -21,16 +25,21 @@
         "babelOptions": {
             "babelrc": false,
             "configFile": false,
-            "presets": ["@babel/preset-react"]
+            "presets": ["@babel/react"] // , "@babel/preset-react"
           },
         "sourceType": "module"
     },
     "plugins": [
         "@babel",
-        "json"
+        "json",
+        "only-warn",
+        "import"
+        //"prettier"
     ],
     "extends": [
+        "plugin:import/recommended",
         "eslint:recommended",
         "plugin:react/recommended"
+        //"prettier"
     ]
 }
