@@ -115,7 +115,7 @@ Documentation References:
 
 ## Install Docker on localmachine
 
-I already had installed Docker on my localmachine. However, the `docker-compose.yml` was failing because `FRONTEND_URL` and `BACKEND_URL` were pointing out to GiTPOD endpoints. To fix this issue, I replaced the values with `http://localhost:3000` and `http://localhost:4567`. I created  a new `docker-compose-local.yml` file to run the containers in my locla enviroment.
+I already had installed Docker on my localmachine. However, the `docker-compose.yml` was failing because `FRONTEND_URL` and `BACKEND_URL` were pointing out to Gitpod endpoints. To fix this issue, I replaced the values with `http://localhost:3000` and `http://localhost:4567`. I created  a new `docker-compose-local.yml` file to run the containers in my local environment.
 
 ![Image of Docker Local](assets/week1/docker-local-run.png)
 
