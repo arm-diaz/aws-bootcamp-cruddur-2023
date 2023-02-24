@@ -100,7 +100,7 @@ Then, I tagged the image `v2` using the command `docker tag cruddur-backend:v2 a
 
 ## Implement a healthcheck in the Docker files
 
-I used Snyk to scan and find security vulnerabilities in the docker container images. Snyc manages vulnerabilities applying severity levels to indicate the risk for that vulnerability in an application. It helped me identify many vulnerabilities, for example, upgrading the base image of nodejs will decrease critical vulnerabilities.
+I used Snyk to scan and find security vulnerabilities in the code and docker container images. Snyc manages vulnerabilities applying severity levels to indicate the risk for that vulnerability in an application. It helped me identify many vulnerabilities, for example, upgrading the base image of nodejs will decrease critical vulnerabilities.
 
 ![Image of Snyk](assets/week1/snyk-docker-health.png)
 
