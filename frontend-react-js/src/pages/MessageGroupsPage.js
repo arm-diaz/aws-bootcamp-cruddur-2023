@@ -3,6 +3,7 @@ import React from "react";
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import MessageGroupFeed from '../components/MessageGroupFeed';
+import process from 'process';
 
 // [TODO] Authenication
 import Cookies from 'js-cookie'
