@@ -18,6 +18,10 @@ tasks:
     init: |
       cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
       npm install && npm install -g eslint
+  - name: snyk
+    init: |
+      cd /workspace
+      npm install snyk -g
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
@@ -25,3 +29,4 @@ vscode:
     - cweijan.vscode-postgresql-client2
     - dbaeumer.vscode-eslint
     - xabikos.JavaScriptSnippets
+    - ckolkman.vscode-postgres
