@@ -14,7 +14,7 @@ article.signin-article {
   width: 100%;
   height: 100%;
   justify-content: flex-start;
-  background: #8819f5;
+  background: #0000CD; /*#8819f5;*/
 }
 
 article.signin-article .signin-wrapper {
