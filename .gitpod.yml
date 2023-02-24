@@ -24,3 +24,4 @@ vscode:
     - ms-azuretools.vscode-docker
     - cweijan.vscode-postgresql-client2
     - dbaeumer.vscode-eslint
+    - xabikos.JavaScriptSnippets
