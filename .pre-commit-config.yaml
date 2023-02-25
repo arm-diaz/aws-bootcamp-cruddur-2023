@@ -1,0 +1,6 @@
+repos:
+-   repo: https://github.com/arm-diaz/aws-bootcamp-cruddur-2023
+    rev: 21.7b0
+    hooks:
+    -   id: black
+    -   files: ^backend_flask/

@@ -162,8 +162,10 @@ I installed [Black](https://black.readthedocs.io/en/stable/), a code formatter t
 
 Documentation References:
 
-- Black can be integrated in Git using [pre-commit](https://github.com/pre-commit/pre-commit)
+- Black can be integrated in Git using [pre-commit github](https://github.com/pre-commit/pre-commit)
 - [Automate Python Code Formatting With Black and pre-commit](https://medium.com/gousto-engineering-techbrunch/automate-python-code-formatting-with-black-and-pre-commit-ebc69dcc5e03)
+- [pre-commit docs](https://pre-commit.com/)
+- [Getting Started with Python Pre-commit Hooks](https://towardsdatascience.com/getting-started-with-python-pre-commit-hooks-28be2b2d09d5)
 
 Black helped me increase high-quality code.
 
