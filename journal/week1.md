@@ -6,7 +6,7 @@
 
 First I installed the [Docker VS Code Extension](https://code.visualstudio.com/docs/containers/overview) to help me build, manage, and deploy containerized applications. Updated `.gitpod.yml` file to include the Docker Extension ID and be able to access Docker when Gitpod is restarted.
 
-Then, I included the Docker files for [backend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/Dockerfile) and [frontend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/Dockerfile) applications. I also **customized** the **code** and **web app** with my name `Armando Diaz` for grading purposes.
+Then, I included the Docker files for [backend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend_flask/Dockerfile) and [frontend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/Dockerfile) applications. I also **customized** the **code** and **web app** with my name `Armando Diaz` for grading purposes.
 
 I executed the following command to test the backend was running successfully. 
 
@@ -23,15 +23,15 @@ After that, I created a `docker-compose.yml` file to handle multiple containers 
 - Seond, I used `inspect` in browser and looked for any error messages under the console section. There was a `CORS` error message pointing out to the fronend endpoint and backend endpoints.
 - Third, I opened docker logs for both services to look for any errors.
 - Forth, I reviewed the code on both services, displayed some information using `print` for the backend and `console.log` for the frontend.
-- Fifth, I realized the *decorator* function `@cross_origin()` was missing in all the methods on `backend-flask/app.py` and the class `ShowActivity` was misspelled. This solved the problem.
+- Fifth, I realized the *decorator* function `@cross_origin()` was missing in all the methods on `backend_flask/app.py` and the class `ShowActivity` was misspelled. This solved the problem.
 
 ### Create the notification feature (Backend and Front)
 
 For this part, all instructions were provided on YouTube and I added/modified the following files:
 
 - Backend:
-  - [notifications_activities](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/services/notifications_activities.py)
-  - [app](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/app.py)
+  - [notifications_activities](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend_flask/services/notifications_activities.py)
+  - [app](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend_flask/app.py)
 - Frontend:
   - [NotificationsFeedPage](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/src/pages/NotificationsFeedPage.js)
   - [App](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/src/App.js)
@@ -64,7 +64,7 @@ In addition, I wanted to use a DynamoDB client to query and visualize tables in 
 I installed the python libraries using `pip` as follows:
 
 ```sh
-cd backend-flask
+cd backend_flask
 pip install -r requirements.txt
 ```
 
