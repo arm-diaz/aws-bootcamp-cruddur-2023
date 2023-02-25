@@ -23,7 +23,7 @@ After that, I created a `docker-compose.yml` file to handle multiple containers 
 - Seond, I used `inspect` in browser and looked for any error messages under the console section. There was a `CORS` error message pointing out to the fronend endpoint and backend endpoints.
 - Third, I opened docker logs for both services to look for any errors.
 - Forth, I reviewed the code on both services, displayed some information using `print` for the backend and `console.log` for the frontend.
-- Fifth, I realized the *decorator* function `@cross_origin()` was missing in all the methods on `backend-flask/app.py`. This solved the problem.
+- Fifth, I realized the *decorator* function `@cross_origin()` was missing in all the methods on `backend-flask/app.py` and the class `ShowActivity` was misspelled. This solved the problem.
 
 ### Create the notification feature (Backend and Front)
 
