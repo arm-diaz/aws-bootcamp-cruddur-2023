@@ -10,8 +10,8 @@ class Messages:
         results = [
             {
                 "uuid": "4e81c06a-db0f-4281-b4cc-98208537772a",
-                "display_name": "Andrew Brown",
-                "handle": "andrewbrown",
+                "display_name": "Armando Diaz",
+                "handle": "armandodiaz",
                 "message": "Cloud is fun!",
                 "created_at": now.isoformat(),
             },
