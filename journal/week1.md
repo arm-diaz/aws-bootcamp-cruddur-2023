@@ -72,6 +72,10 @@ Then, I executed the command ```python3 -m flask run --host=0.0.0.0 --port=4567`
 
 ![Image of Docker Run API CMD](assets/week1/docker-run-cmd.png)
 
+Documentation References:
+
+- [How to run a flask application](https://www.twilio.com/blog/how-run-flask-application)
+
 ## Push and tag a image to DockerHub
 
 I built the backend images using `v{num}` to version and tag docker images. I simulated two versions of docker and run each container in a different port. This could be useful to simulate how distributed applications are executed.
@@ -116,13 +120,17 @@ Documentation References:
 
 I already had installed Docker on my localmachine. However, the `docker-compose.yml` was failing because `FRONTEND_URL` and `BACKEND_URL` were pointing out to Gitpod endpoints. To fix this issue, I replaced the values with `http://localhost:3000` and `http://localhost:4567`. I created  a new `docker-compose-local.yml` file to run the containers in my local environment.
 
+```sh
+docker build ./ -t backend/cruddur:v1
+docker build ./ -t backend/cruddur:v2
+```
+
+```sh
+docker container run --rm -p 4567:4567 -d backend/cruddur:v1
+docker container run --rm -p 4568:4567 -d backend/cruddur:v2
+```
+
 ![Image of Docker Local](assets/week1/docker-local-run.png)
-
-```docker build ./ -t backend/cruddur:v1```
-```docker build ./ -t backend/cruddur:v2```
-
-```docker container run --rm -p 4567:4567 -d backend/cruddur:v1```
-```docker container run --rm -p 4568:4567 -d backend/cruddur:v2```
 
 ## Install Eslint for JavaScript
 
