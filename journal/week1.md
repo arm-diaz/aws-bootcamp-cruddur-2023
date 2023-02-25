@@ -17,8 +17,8 @@ curl -X GET http://localhost:4567/api/activities/home -H "Accept: application/js
 
 After that, I created a `docker-compose.yml` file to handle multiple containers at once and orchestrate applications.
 
-- The `docker-compose` file included `backend` and `frontend` at thi stage of the project.
-- After deployment, the `fronend` did not show any data and I had to debug the containers and code. 
+- The `docker-compose` file included `backend` and `frontend` at this stage of the project.
+- After deployment, the `frontend` did not show any data and I had to debug the containers and code. 
 - First, I checked the ports `3000` and `4567` on Gitpod were public.
 - Seond, I used `inspect` in browser and looked for any error messages under the console section. There was a `CORS` error message pointing out to the fronend endpoint and backend endpoints.
 - Third, I opened docker logs for both services to look for any errors.
@@ -29,10 +29,10 @@ After that, I created a `docker-compose.yml` file to handle multiple containers 
 
 For this part, all instructions were provided on YouTube and I added/modified the following files:
 
-- Backend: 
+- Backend:
   - [notifications_activities](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/services/notifications_activities.py)
   - [app](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/app.py)
-- Frontend: 
+- Frontend:
   - [NotificationsFeedPage](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/src/pages/NotificationsFeedPage.js)
   - [App](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/src/App.js)
 
@@ -44,7 +44,7 @@ No errors were found during the process of this step.
 
 ### Run DynamoDB and Postgres
 
-In this step, I included the configurations to run a Dynamodb local container and Postgres container in the [docker-compose.yml file](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/docker-compose.yml). 
+In this step, I included the configurations to run a Dynamodb local container and Postgres container in the [docker-compose.yml file](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/docker-compose.yml).
 
 - I added the extension `cweijan.vscode-postgresql-client2` in `.gitpod.yml`. That extension is a database client to create a connection with Postgres via VS Code. 
 - I also tested the Postgress Connection via `psql` running th command `psql -Upostgres --host localhost`.
