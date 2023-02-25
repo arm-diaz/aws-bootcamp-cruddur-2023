@@ -110,7 +110,7 @@ The Docker Compose Healtcheck contains five properties:
 - timeout: This property specifies the time Docker awaits for your health check command to return an exit code before declaring it as failed.
 - retries: This property specifies the number of consecutive health check failures required to declare the container as unhealthy.
 - start_period: This property specifies the time your container needs to bootstrap. During this period, health checks with an exit code greater than zero won’t mark the container as unhealthy; however, a status code of 0 will mark the container as healthy.
-- Reference: [To see more details click here](https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e)
+- [Reference](https://www.atatus.com/blog/health-check-command-in-docker/): [To see more details click here](https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e)
 
 I added the following check it to the front-end docker container service in `docker-compose.yml`:
 
@@ -122,6 +122,14 @@ I added the following check it to the front-end docker container service in `doc
       start_period: 30s
       timeout: 10s
 ```
+
+Check docker health:
+
+```sh
+docker ps | grep aws-bootcamp-cruddur-2023-frontend-react-js
+```
+
+![Image of Docker Hub Backend Image](assets/week1/docker-healthcheck.png)
 
 ## Install Snyk and Clair
 
