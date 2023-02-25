@@ -76,7 +76,7 @@ Documentation References:
 
 - [How to run a flask application](https://www.twilio.com/blog/how-run-flask-application)
 
-## Push and tag a image to DockerHub
+## Push and tag an image to DockerHub
 
 I built the backend images using `v{num}` to version and tag docker images. I simulated two versions of docker and run each container in a different port. This could be useful to simulate how distributed applications are executed.
 
