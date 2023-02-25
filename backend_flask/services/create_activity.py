@@ -3,6 +3,9 @@ from datetime import datetime, timedelta, timezone
 
 
 class CreateActivity:
+    """
+    Create Activity
+    """
     def run(message, user_handle, ttl):
         model = {"errors": None, "data": None}
 
