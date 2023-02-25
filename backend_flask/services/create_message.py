@@ -3,6 +3,9 @@ from datetime import datetime, timedelta, timezone
 
 
 class CreateMessage:
+    """
+    Create Message
+    """
     def run(message, user_sender_handle, user_receiver_handle):
         model = {"errors": None, "data": None}
         if user_sender_handle == None or len(user_sender_handle) < 1:
