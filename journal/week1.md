@@ -8,7 +8,7 @@ First I installed the [Docker VS Code Extension](https://code.visualstudio.com/d
 
 Then, I included the Docker files for [backend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/backend-flask/Dockerfile) and [frontend](https://github.com/arm-diaz/aws-bootcamp-cruddur-2023/tree/main/frontend-react-js/Dockerfile) applications. I also **customized** the **code** and **web app** with my name `Armando Diaz` for grading purposes.
 
-I executed the following command to test the backend was running suceesfully. 
+I executed the following command to test the backend was running successfully. 
 
 ```sh
 curl -X GET http://localhost:4567/api/activities/home -H "Accept: application/json" -H "Content-Type: application/json"
