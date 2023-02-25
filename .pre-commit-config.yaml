@@ -3,5 +3,5 @@ repos:
     rev: 21.7b0
     hooks:
     -   id: black
-        files: ^backend_flask/
+        files: backend_flask/
         exclude: ^(backend_flask/venv/)
