@@ -51,12 +51,11 @@ In this step, I included the configurations to run a Dynamodb local container an
 
 ![Image of Postgres db connection](assets/week1/postgres-psql-dbconnection-pluggin.png)
 
-
 After that, I created a table and inserted some records to test the connectivity with Dynamodb Local. The commands can be found in the repository [100DaysOfCloud/challenge-dynamodb-local](https://github.com/100DaysOfCloud/challenge-dynamodb-local).
 
-![Image of DynamoDb CLI](assets/week1/dynamodb-client-workbench.png)
-
 In addition, I wanted to use a DynamoDB client to query and visualize tables in a human-readable manner. I installed [NoSQL Workbench](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html) for Amazon DynamoDB which provides a GUI application for Windows, macOS, and Linux.
+
+![Image of DynamoDb CLI](assets/week1/dynamodb-client-workbench.png)
 
 ## Homework Challenges
 
