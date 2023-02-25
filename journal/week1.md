@@ -134,3 +134,29 @@ I installed [Eslint](https://eslint.org/docs/latest/use/getting-started#:~:text=
 ![Image of Eslint](assets/week1/eslint-frontend-code-check.png)
 
 Results helped me see quickly which libraries, methods, parameters, references were not being used. It helped identify some bugs and things that I will likely improve for future work.
+
+## Install Linter for Python
+
+I installed [Pylint](https://pylint.pycqa.org/en/latest/user_guide/usage/run.html), a tool that checks for errors in Python code and tries to enforce a coding standard. You can test Pylint by running the following command `pylint ./directory`
+
+Documentation References:
+
+- [Docs](https://docs.pylint.org/)
+- [Tutorial](https://www.jumpingrivers.com/blog/python-linting-guide/)
+
+Results helped me find errors/bugs in the code. 
+
+![Image of Pylint](assets/week1/pylint-linter-python.png)
+
+## Auto-formatters in Python
+
+I installed [Black](https://black.readthedocs.io/en/stable/), a code formatter that automatically adjusts your Python code after a well-defined rule set. You can test Black by running the following command `black ./directory`
+
+Documentation References:
+
+- Black can be integrated in Git using [pre-commit](https://github.com/pre-commit/pre-commit)
+- [Automate Python Code Formatting With Black and pre-commit](https://medium.com/gousto-engineering-techbrunch/automate-python-code-formatting-with-black-and-pre-commit-ebc69dcc5e03)
+
+Black helped me increase high-quality code.
+
+![Image of Black](assets/week1/black-code-formatter.png)
