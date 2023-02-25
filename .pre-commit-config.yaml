@@ -4,4 +4,3 @@ repos:
     hooks:
     -   id: black
         files: backend_flask/
-        exclude: ^(backend_flask/venv/)
