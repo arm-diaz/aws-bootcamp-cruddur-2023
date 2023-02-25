@@ -101,7 +101,29 @@ Then, I tagged the image `v2` using the command `docker tag cruddur-backend:v2 a
 
 ![Image of Docker Hub Backend Image](assets/week1/docker-hub-backend-image.png)
 
-## Implement a healthcheck in the Docker files
+## Healthcheck in the Docker files
+
+The Docker Compose Healtcheck contains five properties:
+
+- test: This property specifies the command that will be executed and is the health check of the container.
+- interval: This property specifies the time to wait before executing the health check and then the frequency at which subsequent health checks will be performed.
+- timeout: This property specifies the time Docker awaits for your health check command to return an exit code before declaring it as failed.
+- retries: This property specifies the number of consecutive health check failures required to declare the container as unhealthy.
+- start_period: This property specifies the time your container needs to bootstrap. During this period, health checks with an exit code greater than zero won’t mark the container as unhealthy; however, a status code of 0 will mark the container as healthy.
+- Reference: [To see more details click here](https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e)
+
+I added the following check it to the front-end docker container service in `docker-compose.yml`:
+
+```sh
+    healthcheck:
+      test: curl --fail "https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}" || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+```
+
+## Install Snyk and Clair
 
 I used Snyk to scan and find security vulnerabilities in the code and docker container images. Snyc manages vulnerabilities applying severity levels to indicate the risk for that vulnerability in an application. It helped me identify many vulnerabilities, for example, upgrading the base image of nodejs will decrease critical vulnerabilities.
 

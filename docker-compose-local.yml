@@ -15,6 +15,12 @@ services:
     build: ./frontend-react-js
     ports:
       - "3000:3000"
+    healthcheck:
+      test: curl --fail "http://localhost:3000" || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
     volumes:
       - ./frontend-react-js:/frontend-react-js
   db:
