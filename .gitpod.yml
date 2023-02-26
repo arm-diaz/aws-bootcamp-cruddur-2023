@@ -18,10 +18,17 @@ tasks:
     init: |
       cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
       npm install && npm install -g eslint
+      cd $THEIA_WORKSPACE_ROOT
   - name: snyk
     init: |
       cd /workspace
       npm install snyk -g
+      cd $THEIA_WORKSPACE_ROOT
+  - name: backend-flask
+    init: |
+      cd /workspace
+      pip install -r aws-bootcamp-cruddur-2023/backend_flask/requirements.txt
+      cd $THEIA_WORKSPACE_ROOT
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
@@ -30,3 +37,14 @@ vscode:
     - dbaeumer.vscode-eslint
     - xabikos.JavaScriptSnippets
     - ckolkman.vscode-postgres
+ports:
+  - name: frontend
+    port: 3000
+    onOpen: open-browser
+    visibility: public
+  - name: backend
+    port: 4567
+    visibility: public
+  - name: xray-daemon
+    port: 2000
+    visibility: public
