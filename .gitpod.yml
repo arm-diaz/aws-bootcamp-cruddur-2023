@@ -30,6 +30,10 @@ tasks:
       pip install -r aws-bootcamp-cruddur-2023/backend_flask/requirements.txt
       cd $THEIA_WORKSPACE_ROOT
       export FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+      export ENABLE_XRAY_LOG=""
+      export ENABLE_CLOUDWATCH_LOG=""
+      export ENABLE_ROLLBAR_LOG=""
+      export ENABLE_HONEYCOMB_LOG=""
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
