@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "backend-flask"
+version = "0.1.0"
+description = ""
+authors = ["Armando Daniel Diaz Gonzalez <arm.dan.diaz.gonzalez@gmail.com>"]
+readme = "README.md"
+packages = [{include = "services"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "^2.2.3"
+flask-cors = "^3.0.10"
+pylint = "^2.16.2"
+black = "^23.1.0"
+pre-commit = "^3.1.0"
+aws-xray-sdk = "^2.11.0"
+opentelemetry-api = "^1.16.0"
+opentelemetry-sdk = "^1.16.0"
+opentelemetry-exporter-otlp-proto-http = "^1.16.0"
+opentelemetry-instrumentation-flask = "^0.37b0"
+opentelemetry-instrumentation-requests = "^0.37b0"
+watchtower = "^3.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

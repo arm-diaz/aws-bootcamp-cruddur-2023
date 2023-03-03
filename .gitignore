@@ -376,5 +376,6 @@ poetry.toml
 
 # Other files
 notes.md
+poetry.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,macos,linux,node
