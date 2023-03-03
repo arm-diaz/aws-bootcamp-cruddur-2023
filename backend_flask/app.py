@@ -109,6 +109,8 @@ def init_rollbar():
 
         # send exceptions from `app` to rollbar, using flask's signal system.
         got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+    else:
+        return 'Hello World!'
 
 @app.after_request
 @cross_origin()

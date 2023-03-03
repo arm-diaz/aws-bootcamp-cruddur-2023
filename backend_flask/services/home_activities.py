@@ -7,7 +7,7 @@ if os.getenv("ENABLE_HONEYCOMB_LOG"):
     tracer = trace.get_tracer("home.activities")
 
 
-class HomeActivities:
+class HomeActivities(object):
     
     @staticmethod
     def get_data(now):
@@ -55,7 +55,7 @@ class HomeActivities:
         ]
         return results
 
-    def run(self, logger, request):
+    def run(logger, request):
         logger.info("Home Activities")
         now = datetime.now(timezone.utc).astimezone()
 
@@ -63,14 +63,14 @@ class HomeActivities:
             with tracer.start_as_current_span("home-activities-mock-data"):
                 span = trace.get_current_span()
                 span.set_attribute("app.now", now.isoformat())
-                results = self.get_data(now)
+                results = HomeActivities.get_data(now)
                 span.set_attribute("app.result_length", len(results))
                 return results
                 
         elif os.getenv("ENABLE_CLOUDWATCH_LOG"):
             logger.info("home-activities-mock-data")
             logger.info(f"app.now: {now.isoformat()}")
-            results = self.get_data(now)
+            results = HomeActivities.get_data(now)
             logger.info(f"app.result_length: {len(results)}")
             return results
 
@@ -84,7 +84,7 @@ class HomeActivities:
             segment.put_metadata('url', request.url, 'http')
 
             subsegment = xray_recorder.begin_subsegment('home-activities-mock-data')
-            results = self.get_data(now)
+            results = HomeActivities.get_data(now)
             xray_results_size_dict = {
                "result-size": len(results)
             }
@@ -96,5 +96,5 @@ class HomeActivities:
             return results
         else:
             logger.info("No loggers are running")
-            results = self.get_data(now)
+            results = HomeActivities.get_data(now)
             return results

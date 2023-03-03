@@ -49,6 +49,7 @@ ports:
     visibility: public
   - name: backend
     port: 4567
+    onOpen: open-browser
     visibility: public
   - name: xray-daemon
     port: 2000
