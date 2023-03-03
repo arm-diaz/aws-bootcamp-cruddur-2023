@@ -169,10 +169,9 @@ def data_create_message():
     else:
         return model["data"], 200
 
-
+# @xray_recorder.capture("home-activities")
 @app.route("/api/activities/home", methods=["GET"])
 @cross_origin()
-# @xray_recorder.capture("home-activities")
 def data_home():
     data = HomeActivities.run(logger=LOGGER, request=request)
     return data, 200
