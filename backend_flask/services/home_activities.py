@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
-from aws_xray_sdk.core import xray_recorder
 import os
 
 if os.getenv("ENABLE_HONEYCOMB_LOG"):
@@ -55,7 +54,7 @@ class HomeActivities(object):
         ]
         return results
 
-    def run(logger, request):
+    def run(logger, request, xray_recorder):
         logger.info("Home Activities")
         now = datetime.now(timezone.utc).astimezone()
 
@@ -68,6 +67,7 @@ class HomeActivities(object):
                 return results
                 
         elif os.getenv("ENABLE_CLOUDWATCH_LOG"):
+            logger.info('Hello Cloudwatch! from  /api/activities/home')
             logger.info("home-activities-mock-data")
             logger.info(f"app.now: {now.isoformat()}")
             results = HomeActivities.get_data(now)
@@ -79,20 +79,26 @@ class HomeActivities(object):
             xray_time_dict = {
                 "now": now.isoformat()
             }
+            segment.put_annotation('now', str(xray_time_dict["now"]))
+            segment.put_annotation('method', str(request.method))
+            segment.put_annotation('url', str(request.url))
+
             segment.put_metadata('now', xray_time_dict, 'home-activities-now')
             segment.put_metadata('method', request.method, 'http')
             segment.put_metadata('url', request.url, 'http')
 
             subsegment = xray_recorder.begin_subsegment('home-activities-mock-data')
+
             results = HomeActivities.get_data(now)
             xray_results_size_dict = {
                "result-size": len(results)
             }
-            subsegment.put_annotation('result-size', xray_results_size_dict, 'home-activities-mock-data-results-size')
+            
+            subsegment.put_annotation('result_size', int(xray_results_size_dict["result-size"]))
+            subsegment.put_metadata('result-size', xray_results_size_dict, 'home-activities-mock-data-results-size')
 
             xray_recorder.end_subsegment()
-            xray_recorder.end_segment()
-
+            #xray_recorder.end_segment()
             return results
         else:
             logger.info("No loggers are running")

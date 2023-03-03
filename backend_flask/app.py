@@ -97,6 +97,7 @@ cors = CORS(
 def init_rollbar():
     """init rollbar module"""
     if os.getenv("ENABLE_ROLLBAR_LOG"):
+        LOGGER.info("Rollbar logger enabled")
         rollbar.init(
             # access token
             rollbar_access_token,
@@ -109,6 +110,7 @@ def init_rollbar():
 
         # send exceptions from `app` to rollbar, using flask's signal system.
         got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+        return 'Hello World!'
     else:
         return 'Hello World!'
 
@@ -175,7 +177,7 @@ def data_create_message():
 @app.route("/api/activities/home", methods=["GET"])
 @cross_origin()
 def data_home():
-    data = HomeActivities.run(logger=LOGGER, request=request)
+    data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder)
     return data, 200
 
 
