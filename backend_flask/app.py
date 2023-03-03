@@ -150,7 +150,6 @@ def data_messages(handle):
         return model["errors"], 422
     else:
         return model["data"], 200
-    return
 
 
 @app.route("/api/messages", methods=["POST", "OPTIONS"])
@@ -169,14 +168,13 @@ def data_create_message():
         return model["errors"], 422
     else:
         return model["data"], 200
-    return
 
 
 @app.route("/api/activities/home", methods=["GET"])
 @cross_origin()
 # @xray_recorder.capture("home-activities")
 def data_home():
-    data = HomeActivities.run(logger=LOGGER)
+    data = HomeActivities.run(logger=LOGGER, request=request)
     return data, 200
 
 
@@ -206,7 +204,6 @@ def data_search():
         return model["errors"], 422
     else:
         return model["data"], 200
-    return
 
 
 @app.route("/api/activities", methods=["POST", "OPTIONS"])
@@ -220,7 +217,6 @@ def data_activities():
         return model["errors"], 422
     else:
         return model["data"], 200
-    return
 
 
 @app.route("/api/activities/<string:activity_uuid>", methods=["GET"])
@@ -240,7 +236,6 @@ def data_activities_reply(activity_uuid):
         return model["errors"], 422
     else:
         return model["data"], 200
-    return
 
 
 if __name__ == "__main__":
