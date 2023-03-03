@@ -22,21 +22,5 @@ class UserActivities:
                 }
             ]
             model["data"] = results
-
-        segment = xray_recorder.begin_segment('user-activities')
-        subsegment = xray_recorder.begin_subsegment('mock-data')
-
-        time_dict = {
-            "now": now.isoformat(),
-            "result-size": len(model["data"])
-        }
-
-        segment.put_metadata('key', time_dict, 'namespace')
-
-        subsegment.put_annotation('key', 'value')
-        xray_recorder.end_subsegment()
-
-        # Close the segment
-        xray_recorder.end_segment()
-
+            
         return model
