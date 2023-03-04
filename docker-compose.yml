@@ -17,6 +17,7 @@ services:
       ENABLE_CLOUDWATCH_LOG: "${ENABLE_CLOUDWATCH_LOG}"
       ENABLE_ROLLBAR_LOG: "${ENABLE_ROLLBAR_LOG}"
       ENABLE_HONEYCOMB_LOG: "${ENABLE_HONEYCOMB_LOG}"
+      AWS_XRAY_SDK_ENABLED: "False"
     build: ./backend_flask
     ports:
       - "4567:4567"
