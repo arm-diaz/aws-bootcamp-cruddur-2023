@@ -13,7 +13,7 @@ from services.message_groups import *
 from services.messages import *
 from services.create_message import *
 from services.show_activity import *
-from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
+from libs.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # HoneyComb
 from opentelemetry import trace
