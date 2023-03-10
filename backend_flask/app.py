@@ -184,14 +184,14 @@ def data_create_message():
 # @xray_recorder.capture("home-activities")
 @app.route("/api/activities/home", methods=["GET"])
 @cross_origin()
-def data_home():
+def data_home():    
     access_token = extract_access_token(request.headers)
     try:
         # authenticated request
         claims = cognito_jtw_token.verify(access_token)
         app.logger.debug("authenticated")
         app.logger.debug(claims)
-        data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder)
+        data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder, cognito_user_id=claims["username"])
     except TokenVerifyError as e:
         # unauthenticated request
         app.logger.debug("unauthenticated")
