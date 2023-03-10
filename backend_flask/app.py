@@ -70,7 +70,7 @@ if os.getenv("ENABLE_XRAY_LOG"):
 
 app = Flask(__name__)
 
-cognito_jtw_token = CognitoJwtToken(
+cognito_jwt_token = CognitoJwtToken(
     user_pool_id = os.getenv("AWS_COGNITO_USER_POOL_ID"),
     user_pool_client_id = os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
     region = os.getenv("AWS_DEFAULT_REGION"),
@@ -188,7 +188,7 @@ def data_home():
     try:
         # authenticated request
         access_token = extract_access_token(request.headers)
-        claims = cognito_jtw_token.verify(access_token)
+        claims = cognito_jwt_token.verify(access_token)
         app.logger.debug("authenticated")
         app.logger.debug(claims)
         data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder, cognito_user_id=claims["username"])
