@@ -20,6 +20,7 @@ article.recover-article .recover-wrapper {
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  color: rgba(255,255,255,0.6);
 }
 article.recover-article form {
   padding: 48px;
