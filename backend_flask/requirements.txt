@@ -12,3 +12,4 @@ opentelemetry-instrumentation-requests
 watchtower
 rollbar
 blinker
+Flask-AWSCognito

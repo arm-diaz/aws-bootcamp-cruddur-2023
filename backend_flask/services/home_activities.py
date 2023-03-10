@@ -9,7 +9,7 @@ if os.getenv("ENABLE_HONEYCOMB_LOG"):
 class HomeActivities(object):
     
     @staticmethod
-    def get_data(now):
+    def get_data(now, cognito_user_id):
         results = [
             {
                 "uuid": "68f126b0-1ceb-4a33-88be-d90fa7109eee",
@@ -52,9 +52,21 @@ class HomeActivities(object):
                 "replies": [],
             },
         ]
+        if cognito_user_id != None:
+            extra_crud = {
+                "uuid": "248959df-3079-4947-b847-9e0892d1bab4",
+                "handle": "Lore",
+                "message": "My dear brother, it is the humans that are the problem",
+                "created_at": (now - timedelta(hours=1)).isoformat(),
+                "expires_at": (now + timedelta(hours=12)).isoformat(),
+                "likes": 1452,
+                "replies": [],
+            }
+            results.append(extra_crud)
+
         return results
 
-    def run(logger, request, xray_recorder):
+    def run(logger, request, xray_recorder, cognito_user_id=None):
         logger.info("Home Activities")
         now = datetime.now(timezone.utc).astimezone()
 
@@ -62,7 +74,7 @@ class HomeActivities(object):
             with tracer.start_as_current_span("home-activities-mock-data"):
                 span = trace.get_current_span()
                 span.set_attribute("app.now", now.isoformat())
-                results = HomeActivities.get_data(now)
+                results = HomeActivities.get_data(now, cognito_user_id)
                 span.set_attribute("app.result_length", len(results))
                 return results
                 
@@ -70,7 +82,7 @@ class HomeActivities(object):
             logger.info('Hello Cloudwatch! from  /api/activities/home')
             logger.info("home-activities-mock-data")
             logger.info(f"app.now: {now.isoformat()}")
-            results = HomeActivities.get_data(now)
+            results = HomeActivities.get_data(now, cognito_user_id)
             logger.info(f"app.result_length: {len(results)}")
             return results
 
@@ -89,7 +101,7 @@ class HomeActivities(object):
 
             subsegment = xray_recorder.begin_subsegment('home-activities-mock-data')
 
-            results = HomeActivities.get_data(now)
+            results = HomeActivities.get_data(now, cognito_user_id)
             xray_results_size_dict = {
                "result-size": len(results)
             }
@@ -102,5 +114,5 @@ class HomeActivities(object):
             return results
         else:
             logger.info("No loggers are running")
-            results = HomeActivities.get_data(now)
+            results = HomeActivities.get_data(now, cognito_user_id)
             return results

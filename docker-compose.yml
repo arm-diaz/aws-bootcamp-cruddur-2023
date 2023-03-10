@@ -18,6 +18,8 @@ services:
       ENABLE_ROLLBAR_LOG: "${ENABLE_ROLLBAR_LOG}"
       ENABLE_HONEYCOMB_LOG: "${ENABLE_HONEYCOMB_LOG}"
       AWS_XRAY_SDK_ENABLED: "False"
+      AWS_COGNITO_USER_POOL_ID: "us-east-1_jPAoCPTs4"
+      AWS_COGNITO_USER_POOL_CLIENT_ID: "jf7dn24eekeigfpq28lapgmn5"
     build: ./backend_flask
     ports:
       - "4567:4567"
@@ -26,6 +28,10 @@ services:
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+      REACT_APP_AWS_PROJECT_REGION:  "${AWS_DEFAULT_REGION}"
+      REACT_APP_AWS_COGNITO_REGION: "${AWS_DEFAULT_REGION}"
+      REACT_APP_AWS_USER_POOLS_ID: "us-east-1_jPAoCPTs4"
+      REACT_APP_CLIENT_ID: "jf7dn24eekeigfpq28lapgmn5"
     build: ./frontend-react-js
     ports:
       - "3000:3000"

@@ -13,6 +13,7 @@ from services.message_groups import *
 from services.messages import *
 from services.create_message import *
 from services.show_activity import *
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # HoneyComb
 from opentelemetry import trace
@@ -69,6 +70,13 @@ if os.getenv("ENABLE_XRAY_LOG"):
 
 app = Flask(__name__)
 
+cognito_jtw_token = CognitoJwtToken(
+    user_pool_id = os.getenv("AWS_COGNITO_USER_POOL_ID"),
+    user_pool_client_id = os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
+    region = os.getenv("AWS_DEFAULT_REGION"),
+    request_client=None
+)
+
 # X Ray
 if os.getenv("ENABLE_XRAY_LOG"):
     XRayMiddleware(app, xray_recorder)
@@ -85,11 +93,11 @@ frontend = os.getenv("FRONTEND_URL")
 backend = os.getenv("BACKEND_URL")
 origins = [frontend, backend]
 cors = CORS(
-    app,
+    app, 
     resources={r"/api/*": {"origins": origins}},
-    expose_headers="location,link",
-    allow_headers="content-type,if-modified-since",
-    methods="OPTIONS,GET,HEAD,POST",
+    headers=['Content-Type', 'Authorization'], 
+    expose_headers='Authorization',
+    methods="OPTIONS,GET,HEAD,POST"
 )
 
 @app.before_first_request
@@ -177,7 +185,18 @@ def data_create_message():
 @app.route("/api/activities/home", methods=["GET"])
 @cross_origin()
 def data_home():
-    data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder)
+    access_token = extract_access_token(request.headers)
+    try:
+        # authenticated request
+        claims = cognito_jtw_token.verify(access_token)
+        app.logger.debug("authenticated")
+        app.logger.debug(claims)
+        data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder)
+    except TokenVerifyError as e:
+        # unauthenticated request
+        app.logger.debug("unauthenticated")
+        app.logger.debug(e)
+        data = HomeActivities.run(logger=LOGGER, request=request, xray_recorder=xray_recorder)
     return data, 200
 
 
