@@ -7,8 +7,8 @@ import {ReactComponent as BombIcon} from './svg/bomb.svg';
 export default function ActivityContent(props) {
   const format_time_created_at = (value) => {
     // format: 2050-11-20 18:32:47 +0000
-    const past = DateTime.fromISO(value)
-    const now     = DateTime.now()
+    const past = DateTime.fromISO(value, {zone: 'utc'})
+    const now     = DateTime.now().setZone('utc')
     const diff_mins = now.diff(past, 'minutes').toObject().minutes;
     const diff_hours = now.diff(past, 'hours').toObject().hours;
 
