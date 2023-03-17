@@ -23,8 +23,8 @@ export default function ActivityContent(props) {
 
   const format_time_expires_at = (value) => {
     // format: 2050-11-20 18:32:47 +0000
-    const future = DateTime.fromISO(value)
-    const now     = DateTime.now()
+    const future = DateTime.fromISO(value, {zone: 'utc'})
+    const now     = DateTime.now().setZone('utc')
     const diff_mins = future.diff(now, 'minutes').toObject().minutes;
     const diff_hours = future.diff(now, 'hours').toObject().hours;
     const diff_days = future.diff(now, 'days').toObject().days;
