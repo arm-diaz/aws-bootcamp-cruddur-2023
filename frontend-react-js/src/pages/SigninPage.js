@@ -38,6 +38,15 @@ export default function SigninPage() {
     setPassword(event.target.value);
   }
 
+  React.useEffect(()=>{
+    const email = localStorage.getItem('email');
+    if (email) { //params.email
+      setEmail(email)
+      // Remove the email from local storage because we're done with it.
+      localStorage.removeItem('email');
+    }
+  }, [])
+
   let el_errors;
   if (errors){
     el_errors = <div className='errors'>{errors}</div>;

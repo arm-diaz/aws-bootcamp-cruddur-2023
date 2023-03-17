@@ -11,7 +11,7 @@ def lambda_handler(event, context):
         user_email = user['email']
         user_handle = user['preferred_username']
         user_cognito_id = user['sub']
-        cur.execute(f"INSERT INTO users (display_name, email, handle, cognito_user_id) VALUES({user_display_name}, {user_email}, {user_handle}, {user_cognito_id})")
+        cur.execute(f"INSERT INTO public.users (display_name, email, handle, cognito_user_id) VALUES('{user_display_name}', '{user_email}', '{user_handle}', '{user_cognito_id}')")
         conn.commit() 
 
     except (Exception, psycopg2.DatabaseError) as error:

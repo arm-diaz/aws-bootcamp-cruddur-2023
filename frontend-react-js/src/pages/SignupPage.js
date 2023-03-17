@@ -32,6 +32,7 @@ export default function SignupPage() {
           }
         });
         console.log(user);
+        localStorage.setItem('email', email); 
         window.location.href = `/confirm?email=${email}`
     } catch (error) {
         console.log(error);

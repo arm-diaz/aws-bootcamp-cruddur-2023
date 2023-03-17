@@ -19,7 +19,7 @@ class HomeActivities(object):
         if cognito_user_id == None:
             extra_crud = {
                 "uuid": "248959df-3079-4947-b847-9e0892d1bab4",
-                "handle": "Lore",
+                "handle": "Armando Diaz",
                 "message": "My dear brother, it is the humans that are the problem",
                 "created_at": (now - timedelta(hours=1)).isoformat(),
                 "expires_at": (now + timedelta(hours=12)).isoformat(),

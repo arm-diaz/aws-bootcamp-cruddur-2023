@@ -66,8 +66,9 @@ export default function ConfirmationPage() {
   }
 
   React.useEffect(()=>{
-    if (params.email) {
-      setEmail(params.email)
+    const email = localStorage.getItem('email');
+    if (email) { //params.email
+      setEmail(email)
     }
   }, [])
 
