@@ -146,10 +146,6 @@ def lambda_handler(event, context):
 
 ![Image of AWS Lambda](assets/week4/aws-lambda-post-confirmation.png)
 
-![Image of Cruddur Sign Up](assets/week4/cruddur-signup.png)
-
-![Image of Cruddur Sign Up](assets/week4/cruddur-create-activity.png)
-
 ## Work with PSQL json functions to directly return json from the database
 
 After signing-up and creating a post using the `Crud` button, we are able to populate information in our two tables.
@@ -162,6 +158,8 @@ The signing page populates the Users table that contains the following attribute
 + email text
 + cognito_user_id text
 + created_at TIMESTAMP
+
+![Image of Cruddur Sign Up](assets/week4/cruddur-signup.png)
 
 ![Image of SQL Users](assets/week4/sql-query-users-table.png)
 
@@ -176,6 +174,8 @@ The `Crud` button populates the Activities table that contains the following att
 + reply_to_activity_uuid integer
 + expires_at TIMESTAMP
 + created_at TIMESTAMP
+
+![Image of Cruddur Sign Up](assets/week4/cruddur-create-activity.png)
 
 ![Image of SQL Actitivies table](assets/week4/sql-query-actitivies-table.png)
 
