@@ -1,20 +1,69 @@
-#! /usr/bin/bash
+#!/usr/bin/env python3
 
-#echo "== db-schema-load"
-CYAN='\033[1;36m'
-NO_COLOR='\033[0m'
-LABEL="db-schema-load"
-printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+import boto3
+import sys
 
-schema_path="$(realpath .)/db/schema.sql"
+attrs = {
+  'endpoint_url': 'http://localhost:8000'
+}
 
-echo $schema_path
+if len(sys.argv) == 2:
+  if "prod" in sys.argv[1]:
+    attrs = {}
 
-if [ "$1" = "prod" ]; then
-  echo "Running in production mode"
-  URL=$PROD_CONNECTION_URL
-else
-  URL=$CONNECTION_URL
-fi
+ddb = boto3.client('dynamodb',**attrs)
 
-psql $URL cruddur < $schema_path
+table_name = 'cruddur-messages'
+
+
+response = ddb.create_table(
+  TableName=table_name,
+  AttributeDefinitions=[
+    {
+      'AttributeName': 'message_group_uuid',
+      'AttributeType': 'S'
+    },
+    {
+      'AttributeName': 'pk',
+      'AttributeType': 'S'
+    },
+    {
+      'AttributeName': 'sk',
+      'AttributeType': 'S'
+    },
+  ],
+  KeySchema=[
+    {
+      'AttributeName': 'pk',
+      'KeyType': 'HASH'
+    },
+    {
+      'AttributeName': 'sk',
+      'KeyType': 'RANGE'
+    },
+  ],
+  GlobalSecondaryIndexes= [{
+    'IndexName':'message-group-sk-index',
+    'KeySchema':[{
+      'AttributeName': 'message_group_uuid',
+      'KeyType': 'HASH'
+    },{
+      'AttributeName': 'sk',
+      'KeyType': 'RANGE'
+    }],
+    'Projection': {
+      'ProjectionType': 'ALL'
+    },
+    'ProvisionedThroughput': {
+      'ReadCapacityUnits': 5,
+      'WriteCapacityUnits': 5
+    },
+  }],
+  BillingMode='PROVISIONED',
+  ProvisionedThroughput={
+      'ReadCapacityUnits': 5,
+      'WriteCapacityUnits': 5
+  }
+)
+
+print(response)
