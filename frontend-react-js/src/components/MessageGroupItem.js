@@ -8,8 +8,8 @@ export default function MessageGroupItem(props) {
 
   const format_time_created_at = (value) => {
     // format: 2050-11-20 18:32:47 +0000
-    const created = DateTime.fromISO(value)
-    const now     = DateTime.now()
+    const created = DateTime.fromISO(value, {zone: 'utc'})
+    const now     = DateTime.now().setZone('utc')
     const diff_mins = now.diff(created, 'minutes').toObject().minutes;
     const diff_hours = now.diff(created, 'hours').toObject().hours;
 
@@ -24,14 +24,14 @@ export default function MessageGroupItem(props) {
 
   const classes = () => {
     let classes = ["message_group_item"];
-    if (params.handle == props.message_group.handle){
+    if (params.message_group_uuid == props.message_group.uuid){
       classes.push('active')
     }
     return classes.join(' ');
   }
 
   return (
-    <Link className={classes()} to={`/messages/@`+props.message_group.handle}>
+    <Link className={classes()} to={`/messages/`+props.message_group.uuid}>
       <div className='message_group_avatar'></div>
       <div className='message_content'>
         <div className='message_group_meta'>
