@@ -63,7 +63,11 @@ response = ddb.create_table(
   ProvisionedThroughput={
       'ReadCapacityUnits': 5,
       'WriteCapacityUnits': 5
-  }
+  },
+  StreamSpecification={
+        'StreamEnabled': True,
+        'StreamViewType': 'NEW_IMAGE'
+    }
 )
 
 print(response)
