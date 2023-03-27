@@ -72,7 +72,7 @@ Then, I started a conversation between two users in Crudder.
 
 ![Image of Crudder Message](assets/week5/cruddur-dynamodb-messages.png)
 
-The message created triggers the lambda function and populates the DynamoDB table.
+The new message triggers the lambda function and populates the DynamoDB table.
 
 We can check the lambda function logs by reviewing the cloudwatch logs.
 
