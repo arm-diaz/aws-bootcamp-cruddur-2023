@@ -27,6 +27,11 @@ tasks:
       cd /workspace
       npm install snyk -g
       cd $THEIA_WORKSPACE_ROOT
+  - name: momento
+    init: |
+      cd /workspace
+      wget 'https://github.com/momentohq/momento-cli/releases/download/v0.36.0/momento-cli_0.36.0_amd64.deb' &&
+      sudo dpkg -i momento-cli_0.36.0_amd64.deb
   - name: backend-flask
     init: |
       cd /workspace

@@ -39,6 +39,9 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 
+# Momento
+# from libs.momento import MomentoCounter
+
 # Configuring Logger to Use CloudWatch
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.DEBUG)
