@@ -27,7 +27,7 @@ One error was found when populating the table running DynamoDB-local. Some hardc
 
 ![Image of Error DynamoDB-Local Missing user](assets/week5/error-dynamodb-local-database.png)
 
-Adding new users in the Postgres database solved the problem.
+I also made sure that the Postgres table **users** contained at least two users.
 
 ![Image of RDS list of users](assets/week5/rds-query-users.png)
 
