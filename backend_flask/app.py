@@ -104,7 +104,7 @@ cors = CORS(
     methods="OPTIONS,GET,HEAD,POST"
 )
 
-@app.before_first_request
+#@app.before_first_request
 @cross_origin()
 def init_rollbar():
     """init rollbar module"""

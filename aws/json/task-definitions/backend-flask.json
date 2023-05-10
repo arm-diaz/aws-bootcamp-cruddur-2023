@@ -40,6 +40,9 @@
           }
         },
         "environment": [
+          {"name": "AWS_XRAY_DAEMON_ADDRESS", "value": "xray-daemon:2000"},
+          {"name": "AWS_XRAY_URL", "value": "*"},
+          {"name": "AWS_XRAY_SDK_ENABLED", "value": "False"},
           {"name": "OTEL_SERVICE_NAME", "value": "backend-flask"},
           {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
           {"name": "AWS_COGNITO_USER_POOL_ID", "value": "us-east-1_jPAoCPTs4"},
